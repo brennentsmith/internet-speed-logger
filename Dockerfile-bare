@@ -1,0 +1,10 @@
+FROM alpine as build
+RUN apk add curl
+RUN export SPEEDTESTVERSION="0.10.0.20-1.173ad8d" && \
+    export SPEEDTESTARCH="x86_64" && \
+    export SPEEDTESTPLATFORM="linux" &&\
+  curl -Ss -L https://ookla.bintray.com/download/ookla-speedtest-$SPEEDTESTVERSION-$SPEEDTESTARCH-$SPEEDTESTPLATFORM.tgz | tar -zx > /tmp/speedtest &&\
+  chmod +x /tmp/speedtest
+
+FROM scratch
+COPY --from=build /tmp/speedtest .

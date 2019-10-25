@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  speedlogger:
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+    image: speedlogger
+    depends_on:
+      - mongo
+  speedlogger-runner:
+    image: speedlogger
+    depends_on:
+      - speedlogger
+    restart: always
+    entrypoint:
+      - node
+      - run-speedtest.js
+      - daemon
+  mongo:
+    image: bitnami/mongodb
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_USERNAME=speedtest
+      - MONGODB_PASSWORD=speedtest
+      - MONGODB_DATABASE=speedtest

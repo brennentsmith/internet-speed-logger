@@ -1,0 +1,109 @@
+body {
+    background-color: #0b0c1b;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+}
+
+/* Root Visualization */
+
+#visualization {
+	display: block;
+    width: 100%;
+    height: 98vh;
+    color: #333;
+}
+
+/* Horizontal Gridlines */
+
+.vis-panel.vis-background.vis-horizontal .vis-grid.vis-major {
+    border-color:#555;
+}
+
+.vis-panel.vis-background.vis-horizontal .vis-grid.vis-minor {
+    border-color:#222;
+}
+
+/* Vertical Gridlines*/
+
+.vis-time-axis .vis-grid.vis-minor {
+    border-color: #444;
+}
+
+.vis-time-axis .vis-grid.vis-major {
+    border-color: #FF7F6E;
+}
+
+/* Y Axis Labels */
+.vis-data-axis .vis-y-axis.vis-major {
+    color: #bbb;
+}
+
+.vis-data-axis .vis-y-axis.vis-minor {
+    color: #4d4d4d;
+}
+
+/* X Axis Labels */
+
+.vis-time-axis .vis-text.vis-major{
+    color: #bbb;
+}
+
+.vis-time-axis .vis-text.vis-minor{
+    color: #4d4d4d;
+}
+
+.vis-timeline {
+    border: none;
+}
+
+.vis-current-time {
+    background-color:#fff38e;
+}
+
+/* Legend */
+.vis-legend {
+    background-color: rgba(38,39,59,.85);
+    color: #bbb;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(255,243,142,.15);
+    width: 281px !important;
+}
+
+.vis-legend-text {
+    line-height: 21px;
+}
+
+.vis-timeline .vis-outline {
+    visibility: hidden;
+}
+
+.vis-timeline .vis-icon-fill {
+    display:none;
+}
+
+/* Download Styles */
+.vis-graph-group0 {
+    fill:#6afff3;
+    stroke: #6afff3;
+}
+
+/* Upload Styles */
+.vis-graph-group1 {
+    fill:#bf71ff;
+    stroke: #bf71ff;
+}
+
+/* Ping Styles */
+.vis-graph-group2 {
+    fill:#9193a8;
+    stroke:#9193a8;
+}
+
+/* Stats */
+.vis-legend-stats {
+    float: right;
+}
+.vis-legend-stats span {
+    display: block;
+}
+
