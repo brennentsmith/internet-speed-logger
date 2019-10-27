@@ -5,25 +5,24 @@
   "main": "index.js",
   "scripts": {
     "dev": "node_modules/nodemon/bin/nodemon.js",
-    "speedtest": "run-test.js"
+    "speedtest": "run-test.js",
+    "webserver": "node_modules/forever/bin/forever run index.js"
   },
   "author": "Brennen Smith",
   "license": "ISC",
   "dependencies": {
     "compression": "^1.6.2",
     "config": "^3.2.3",
-    "eslint-config-airbnb-base": "^14.0.0",
     "express": "^4.14.0",
-    "jquery": "^3.1.0",
+    "jquery": "^3.4.1",
     "mongodb": "^3.3.3",
     "morgan": "^1.9.1",
-    "pug": "^2.0.0-beta5",
-    "save-dev": "0.0.1-security",
-    "vis": "^4.21.0-EOL"
+    "vis-charts": "1.0.0"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-config-airbnb-base": "^14.0.0",
     "forever": "^0.15.2",
     "nodemon": "^1.10.2"
   }

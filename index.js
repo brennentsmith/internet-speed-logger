@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 app.use('/styles/', express.static(path.join(`${__dirname}/styles`)));
 app.use('/scripts/', express.static(path.join(`${__dirname}/scripts`)));
-app.use('/scripts/vis/', express.static(path.join(`${__dirname}/node_modules/vis/dist/`)));
+app.use('/scripts/vis/', express.static(path.join(`${__dirname}/node_modules/vis-charts/dist/`)));
 app.use('/scripts/jquery/', express.static(path.join(`${__dirname}/node_modules/jquery/dist/`)));
 
 const dbInit = require('./db');

@@ -60,10 +60,10 @@ groups.add({
 
 groups.add({
   id: 3,
-  content: 'Avg Download',
+  content: 'Jitter - Milliseconds',
   options: {
     drawPoints: {
-      style: 'square', // square, circle
+      style: 'circle', // square, circle
     },
     shaded: {
       orientation: 'bottom', // top, bottom
@@ -86,9 +86,24 @@ function rangeChanged(event) {
   const end = convertTime(event.end);
   const params = $.param({ end, start });
   $.getJSON(`/api/avg?${params}`, (data) => {
-    $('.vis-legend-stats #avg-download').text(`Avg. ${data[0].avgd.toFixed(2)}`);
-    $('.vis-legend-stats #avg-upload').text(`Avg. ${data[0].avgu.toFixed(2)}`);
-    $('.vis-legend-stats #avg-ping').text(`Avg. ${data[0].avgp.toFixed(2)}`);
+    let legendText = {
+      down: "-",
+      up: "-",
+      ping: "-",
+      jitter: "-"
+    }
+    if (data.length > 0) {
+      legendText = {
+        down: `Avg. ${data[0].avgd.toFixed(2)}`,
+        up: `Avg. ${data[0].avgu.toFixed(2)}`,
+        ping: `Avg. ${data[0].avgp.toFixed(2)}`,
+        jitter: `Avg. ${data[0].avgp.toFixed(3)}`
+      }
+    }
+    $('.vis-legend-stats #avg-download').text(legendText.down);
+    $('.vis-legend-stats #avg-upload').text(legendText.up);
+    $('.vis-legend-stats #avg-ping').text(legendText.ping);
+    $('.vis-legend-stats #avg-jitter').text(legendText.jitter);
   });
   debounceGlobal = false;
   setTimeout(() => {
@@ -97,11 +112,15 @@ function rangeChanged(event) {
 }
 
 $.getJSON('/api/', (data) => {
+  if (data.length === 0) {
+    $('body').append('<div class="vis-legend-text vis-legend-stats">No Data Found in Database</div>');
+    return;
+  }
   // eslint-disable-next-line no-undef
   const dataset = new vis.DataSet(data);
   // eslint-disable-next-line no-undef
   const Graph2d = new vis.Graph2d(container, dataset, groups, options);
-  $('.vis-legend').append('<div class="vis-legend-text vis-legend-stats"><span id="avg-download"></span><span id="avg-upload"></span><span id="avg-ping"></span></div>');
+  $('.vis-legend').append('<div class="vis-legend-text vis-legend-stats"><span id="avg-download"></span><span id="avg-upload"></span><span id="avg-ping"></span><span id="avg-jitter"></span></div>');
   Graph2d.on('rangechanged', rangeChanged);
   rangeChanged(options);
   let loadTime = new Date().getTime();

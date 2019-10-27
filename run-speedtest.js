@@ -22,10 +22,11 @@ function insertData(result) {
     const byteToMbit = 0.000008;
     const { timestamp } = result;
     const ping = result.ping.latency;
+    const { jitter } = result.ping;
     const download = result.download.bandwidth * byteToMbit;
     const upload = result.upload.bandwidth * byteToMbit;
     const speedtestResult = {
-      date: new Date(timestamp), ping, download, upload,
+      date: new Date(timestamp), ping, download, upload, jitter,
     };
     dbs.insertOne(speedtestResult, (err) => {
       if (err) {
