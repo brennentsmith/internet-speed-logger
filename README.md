@@ -18,6 +18,10 @@ Go to `http://localhost:3000` in your browser, and away you go!
 
 ## Components
 
+The requrements for Internet Speed Logger are:
+- NodeJS 12-LTS or newer
+- MongoDB
+
 There are three core components to running Internet Speed Logger:
 - Webserver (`/index.js`) - Webserver which delivers static assets and provides API. 
 - Speedrunner (`/run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
@@ -50,12 +54,16 @@ docker compose up
 ```
 
 ### Forever
+Install the following:
+- NodeJS: https://nodejs.org/en/download/package-manager/ 
+- MongoDB: https://docs.mongodb.com/manual/installation/
+- Forever: https://www.npmjs.com/package/forever (optional) 
+
 ```
-<< install mongodb https://docs.mongodb.com/manual/installation/ >>
-[sudo] npm install forever -g
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
-<< download latest version of Speedtest-CLI to `bin` dir within repo >>
+<< download latest version of Speedtest-CLI binary to `bin` dir within repo >>
+npm ci
 forever start index.js
 forever start run-speedtest.js daemon
 ```
