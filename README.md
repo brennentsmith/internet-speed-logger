@@ -14,7 +14,7 @@ git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
-Go to `http://localhost:3000` in your browser, and away you go!
+Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
 
 ## Components
 
@@ -52,6 +52,8 @@ git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
+
+You may see some errors upon boot regarding `speedlogger-web_1     | MongoNetworkError: failed to connect to server` - these are normal as the web service will attempt to create the connection pool before MongoDB is ready. Once MongoDB is ready (~30s), all will work correctly. 
 
 ### Forever
 Install the following:
