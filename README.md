@@ -6,7 +6,7 @@ _A simple application to track your internet download and upload speeds with an 
 
 This is a simple application which continuously monitors your internet connection and plots the results within a responsive web view along with providing basic average metrics. This leverages the official Speedtest.net CLI binary from Ookla to provide the best performance possible.
 
-An early version of this service has been run for many years and has been instrumental for tracking internet performance changes.
+An early version of this service has been running for many years (~2016) and it has been instrumental for tracking internet performance issues.
 
 To bring it online, simply run:
 ```
@@ -48,9 +48,6 @@ git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
-
-### SystemD 
-Example Unit files can be found within the `/example-init` directory.
 
 ### Forever
 ```
