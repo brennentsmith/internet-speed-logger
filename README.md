@@ -2,21 +2,21 @@
 
 _A simple application to track your internet download and upload speeds, along with latency, over many years._
 
-
 ![Preview of Internet Speed Logger](https://ookla.d.pr/HtcWde+)
 
+This is a simple application which continuously monitors your internet connection and plots the results within a responsive web view along with providing basic average metrics. This leverages the official Speedtest.net CLI binary from Ookla to provide the best performance possible.
 
-This is a simple application which continuously monitors your internet connection and plots the results within a responsive web view along with providing basic average metrics. This leverages the official Speedtest.net CLI binary from Ookla to provide the best performance possible. 
-
-An early version of this service has been run for many years and has been instrumental for tracking internet performance changes. 
+An early version of this service has been run for many years and has been instrumental for tracking internet performance changes.
 
 To bring it online, simply run:
+
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
-Go to `http://localhost:3000` in your browser, and away you go! 
+
+Go to `http://localhost:3000` in your browser, and away you go!
 
 ## Configuration
 
