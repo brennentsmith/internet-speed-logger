@@ -21,11 +21,12 @@ Go to `http://localhost:3000` in your browser, and away you go!
 ## Configuration
 
 All configuration is held within the `/config/default.js` directory. The following options are available:
+
 | Leaf | Default | Description |
-| -- | -- | -- |
-| `webserver.listenPort`      | `3000`       | Port which the webserver will listen on   |
-| `webserver.listenHost`      | `0.0.0.0`       | Host which the webserver will listen on   |
-| `db.connectionString`   | `mongodb://speedtest:speedtest@mongo:27017/speedtest`        | Connection string the connection for the backend MongoDB compliant database. See: [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/)      |
-| `db.collection`      | `speedtest`       | Collection to use within MongoDB compliant database.   |
-| `speedtest.commandString`      | `bin/speedtest -f json --accept-license`       | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.   |
-| `speedtest.intervalSec`      | `43200`       | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and floored at 1800 seconds.   |
+| --- | --- | --- |
+| `webserver.listenPort` | `3000` | Port which the webserver will listen on. |
+| `webserver.listenHost` | `0.0.0.0` | Host which the webserver will listen on. |
+| `db.connectionString` | `mongodb://speedtest:speedtest@mongo:27017/speedtest` | Connection string the connection for the backend MongoDB compliant database. |
+| `db.collection` | `speedtest` | Collection to use within MongoDB compliant database. 
+| `speedtest.commandString` | `bin/speedtest -f json --accept-license` | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server. |
+| `speedtest.intervalSec` | `43200` | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and floored at 1800 seconds. |
