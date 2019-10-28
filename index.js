@@ -6,6 +6,8 @@ const compression = require('compression');
 const morgan = require('morgan');
 
 const listenPort = config.get('webserver.listenPort');
+const listenHost = config.get('webserver.listenHost');
+
 const app = express();
 app.use(morgan('combined'));
 
@@ -26,7 +28,7 @@ const routes = require('./routes/app');
 
 dbInit().then((dbs) => {
   // Initialize the application once database connections are ready.
-  routes(app, dbs).listen(listenPort, () => console.log(`Listening on port ${listenPort}`));
+  routes(app, dbs).listen(listenPort, listenHost, () => console.log(`Listening on port ${listenPort}`));
 }).catch((err) => {
   console.error('Failed to make all database connections!');
   console.error(err);

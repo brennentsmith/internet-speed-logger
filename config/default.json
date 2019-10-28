@@ -1,10 +1,10 @@
 {
   "webserver": {
-    "listenPort": 3000
+    "listenPort": 3000,
+    "listenHost": "0.0.0.0"
   },
   "db": {
     "connectionString": "mongodb://speedtest:speedtest@mongo:27017/speedtest",
-    "db": "speedtest",
     "collection": "speedtest"
   },
   "speedtest": {
