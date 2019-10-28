@@ -97,7 +97,7 @@ function rangeChanged(event) {
         down: `Avg. ${data[0].avgd.toFixed(2)}`,
         up: `Avg. ${data[0].avgu.toFixed(2)}`,
         ping: `Avg. ${data[0].avgp.toFixed(2)}`,
-        jitter: `Avg. ${data[0].avgp.toFixed(3)}`,
+        jitter: `Avg. ${data[0].avgj.toFixed(2)}`,
       };
     }
     $('.vis-legend-stats #avg-download').text(legendText.down);
