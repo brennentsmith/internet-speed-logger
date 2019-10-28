@@ -14,20 +14,22 @@ function bulkAPI(req, res, dbs) {
       // TODO: Make this data transformation cleaner
       for (let i = 0; i < docs.length; i += 1) {
         const struct = {
-          0: docs[i].download,
-          1: docs[i].upload,
-          2: docs[i].ping,
-          3: docs[i].jitter,
+          0: Object.is(docs[i].download, undefined) ? null : docs[i].download,
+          1: Object.is(docs[i].upload, undefined) ? null : docs[i].upload,
+          2: Object.is(docs[i].ping, undefined) ? null : docs[i].ping,
+          3: Object.is(docs[i].jitter, undefined) ? null : docs[i].jitter,
         };
         for (let j = 0; j < Object.keys(struct).length; j += 1) {
-          const dataPoint = {
-            // eslint-disable-next-line no-underscore-dangle
-            id: docs[i]._id + j,
-            x: docs[i].date,
-            y: struct[j],
-            group: j,
-          };
-          data.push(dataPoint);
+          if (struct[j] !== null) {
+            const dataPoint = {
+              // eslint-disable-next-line no-underscore-dangle
+              id: docs[i]._id + j,
+              x: docs[i].date,
+              y: struct[j],
+              group: j,
+            };
+            data.push(dataPoint);
+          }
         }
       }
     }
