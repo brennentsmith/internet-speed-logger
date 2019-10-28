@@ -1,0 +1,1 @@
+If you are running Internet Speed Logger outside of Docker, download the Ookla Speedtest Binary from here and place it in this directory: https://ookla.bintray.com/download/
