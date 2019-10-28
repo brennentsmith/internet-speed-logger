@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   speedlogger:
+    image: brennentsmith/internet-speed-logger
     ports:
       - "3000:3000"
     build:
@@ -10,7 +11,7 @@ services:
       - mongo
     restart: always
   speedlogger-runner:
-    image: speedlogger
+    image: brennentsmith/internet-speed-logger
     depends_on:
       - speedlogger
     restart: always
