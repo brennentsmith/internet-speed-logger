@@ -22,9 +22,9 @@ services:
     image: bitnami/mongodb
     expose:
       - "27017"
-    ports:
-      - "27017:27017"
     environment:
       - MONGODB_USERNAME=speedtest
       - MONGODB_PASSWORD=speedtest
       - MONGODB_DATABASE=speedtest
+    volumes:
+      - ./mongo-persistence:/bitnami
