@@ -58,6 +58,7 @@ Example Unit files can be found within the `/example-init` directory.
 [sudo] npm install forever -g
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
+<< download latest version of Speedtest-CLI to `bin` dir within repo >>
 forever start index.js
 forever start run-speedtest.js daemon
 ```
