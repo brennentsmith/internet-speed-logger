@@ -1,6 +1,6 @@
 # Internet Speed Logger
 
-_A simple application to track your internet download and upload speeds, along with latency, over many years._
+_A simple application to track your internet download and upload speeds with an elegant web interface._
 
 ![Preview of Internet Speed Logger](https://i.imgur.com/LhtHxpZ.gif)
 
