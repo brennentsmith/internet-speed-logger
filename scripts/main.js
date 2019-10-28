@@ -87,18 +87,18 @@ function rangeChanged(event) {
   const params = $.param({ end, start });
   $.getJSON(`/api/avg?${params}`, (data) => {
     let legendText = {
-      down: "-",
-      up: "-",
-      ping: "-",
-      jitter: "-"
-    }
+      down: '-',
+      up: '-',
+      ping: '-',
+      jitter: '-',
+    };
     if (data.length > 0) {
       legendText = {
         down: `Avg. ${data[0].avgd.toFixed(2)}`,
         up: `Avg. ${data[0].avgu.toFixed(2)}`,
         ping: `Avg. ${data[0].avgp.toFixed(2)}`,
-        jitter: `Avg. ${data[0].avgp.toFixed(3)}`
-      }
+        jitter: `Avg. ${data[0].avgp.toFixed(3)}`,
+      };
     }
     $('.vis-legend-stats #avg-download').text(legendText.down);
     $('.vis-legend-stats #avg-upload').text(legendText.up);
@@ -113,7 +113,7 @@ function rangeChanged(event) {
 
 $.getJSON('/api/', (data) => {
   if (data.length === 0) {
-    $('body').append('<div class="vis-legend-text vis-legend-stats">No Data Found in Database</div>');
+    $('body').append('<div class="vis-legend-text vis-legend-stats">No Data Found in Database - The first test may be in progress.</div>');
     return;
   }
   // eslint-disable-next-line no-undef
