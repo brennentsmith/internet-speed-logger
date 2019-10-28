@@ -6,8 +6,7 @@ RUN export SPEEDTESTVERSION="0.10.3" && \
     export SPEEDTESTPLATFORM="linux" && \
     mkdir -p bin && \
     curl -Ss -L https://ookla.bintray.com/download/ookla-speedtest-$SPEEDTESTVERSION-$SPEEDTESTARCH-$SPEEDTESTPLATFORM.tgz | tar -zx -C /data/bin && \
-    chmod +x bin/speedtest && \ 
-    ls -al bin
+    chmod +x bin/speedtest
 COPY package.json package-lock.json* ./
 RUN npm ci
 COPY . .
