@@ -1,19 +1,18 @@
 version: "3.7"
 services:
-  speedlogger:
+  speedlogger-web:
     image: brennentsmith/internet-speed-logger
     ports:
       - "3000:3000"
     build:
       context: .
-    image: speedlogger
     depends_on:
       - mongo
     restart: always
   speedlogger-runner:
     image: brennentsmith/internet-speed-logger
     depends_on:
-      - speedlogger
+      - speedlogger-web
     restart: always
     entrypoint:
       - node
