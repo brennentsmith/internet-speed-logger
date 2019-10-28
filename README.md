@@ -4,7 +4,7 @@ _A simple application to track your internet download and upload speeds with an 
 
 ![Preview of Internet Speed Logger](https://i.imgur.com/LhtHxpZ.gif)
 
-This is a simple application which continuously monitors your internet connection and plots the results within a responsive web view along with providing basic average metrics. This leverages the official Speedtest.net CLI binary from Ookla to provide the best performance possible.
+This is a simple application which continuously monitors your internet connection and plots the results within a responsive web view along with providing basic aggregation of the current visible timeframe (mean). This leverages the official Speedtest.net CLI binary from Ookla to provide the best performance possible.
 
 An early version of this service has been running for many years (~2016) and it has been instrumental for tracking internet performance issues.
 
