@@ -4,6 +4,8 @@ services:
     image: brennentsmith/internet-speed-logger
     ports:
       - "3000:3000"
+    build:
+      context: .
     depends_on:
       - mongo
     restart: always
@@ -20,6 +22,8 @@ services:
     image: bitnami/mongodb
     expose:
       - "27017"
+    ports:
+      - "27017:27017"
     environment:
       - MONGODB_USERNAME=speedtest
       - MONGODB_PASSWORD=speedtest
