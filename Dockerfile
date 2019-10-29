@@ -1,7 +1,7 @@
 FROM node:12 as build
 WORKDIR /data/
 ENV NODE_ENV=production
-RUN export SPEEDTESTVERSION="0.10.3" && \
+RUN export SPEEDTESTVERSION="1.0.0" && \
     export SPEEDTESTARCH="x86_64" && \
     export SPEEDTESTPLATFORM="linux" && \
     mkdir -p bin && \
