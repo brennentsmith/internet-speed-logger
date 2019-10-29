@@ -45,7 +45,7 @@ All configuration is held within the `/config/default.js` directory. The followi
 ## Running Internet Speed Logger
 
 ### Container
-A container is published to Dockerhub which contains both the webserver and test daemon. This is located on [DockerHub](https://cloud.docker.com/u/brennentsmith/repository/docker/brennentsmith/internet-speed-logger)
+A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/internet-speed-logger) which contains both the webserver and test daemon.
 
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
