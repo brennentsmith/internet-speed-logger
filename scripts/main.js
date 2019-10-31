@@ -79,6 +79,10 @@ function convertTime(val) {
   return val;
 }
 
+function normalizeAvg(val) {
+  return val === null ? '-' : val.toFixed(2);
+}
+
 function rangeChanged(event) {
   if (!debounceGlobal) { return; }
 
@@ -94,10 +98,10 @@ function rangeChanged(event) {
     };
     if (data.length > 0) {
       legendText = {
-        down: `Avg. ${data[0].avgd.toFixed(2)}`,
-        up: `Avg. ${data[0].avgu.toFixed(2)}`,
-        ping: `Avg. ${data[0].avgp.toFixed(2)}`,
-        jitter: `Avg. ${data[0].avgj.toFixed(2)}`,
+        down: `Avg. ${normalizeAvg(data[0].avgd)}`,
+        up: `Avg. ${normalizeAvg(data[0].avgu)}`,
+        ping: `Avg. ${normalizeAvg(data[0].avgp)}`,
+        jitter: `Avg. ${normalizeAvg(data[0].avgj)}`,
       };
     }
     $('.vis-legend-stats #avg-download').text(legendText.down);
