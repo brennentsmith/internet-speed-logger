@@ -59,7 +59,7 @@ function processOutput(error, stdout, stderr) {
       // No matter if there is an error, re-schedule.
       // eslint-disable-next-line no-use-before-define
       const delay = getDelay(intervalMS);
-      console.log(`Sleeping for ${delay} seconds before next run...`);
+      console.log(`Sleeping for ${Math.floor(delay / 1000)} seconds before next run...`);
       // eslint-disable-next-line no-use-before-define
       setTimeout(executeSpeedtest, delay);
     } else {
