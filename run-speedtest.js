@@ -32,7 +32,9 @@ function insertData(result) {
       if (err) {
         console.error(err);
       }
-      process.exit();
+      if (!isDaemon) {
+        process.exit();
+      }
     });
   }).catch((err) => {
     console.error('Failed to connect to mongo');
