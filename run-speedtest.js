@@ -14,7 +14,7 @@ const intervalMS = intervalS * 1000;
 const isDaemon = process.argv[2] === 'daemon';
 
 function getDelay(interval) {
-  return Math.floor(interval * Math.random() * (1.25 - 0.75) + 0.75);
+  return Math.floor(interval * (Math.random() * 0.5 + 0.75));
 }
 
 function insertData(result) {
@@ -58,7 +58,12 @@ function processOutput(error, stdout, stderr) {
     if (isDaemon) {
       // No matter if there is an error, re-schedule.
       // eslint-disable-next-line no-use-before-define
-      setTimeout(executeSpeedtest, getDelay(intervalMS));
+      const delay = getDelay(intervalMS);
+      console.log(`Sleeping for ${delay} seconds before next run...`);
+      // eslint-disable-next-line no-use-before-define
+      setTimeout(executeSpeedtest, delay);
+    } else {
+      process.exit();
     }
   }
 }
