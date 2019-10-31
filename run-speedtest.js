@@ -32,6 +32,7 @@ function insertData(result) {
       if (err) {
         console.error(err);
       }
+      process.exit();
     });
   }).catch((err) => {
     console.error('Failed to connect to mongo');
@@ -62,8 +63,6 @@ function processOutput(error, stdout, stderr) {
       console.log(`Sleeping for ${Math.floor(delay / 1000)} seconds before next run...`);
       // eslint-disable-next-line no-use-before-define
       setTimeout(executeSpeedtest, delay);
-    } else {
-      process.exit();
     }
   }
 }
