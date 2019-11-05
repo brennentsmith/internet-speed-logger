@@ -8,7 +8,7 @@
     "collection": "speedtest"
   },
   "speedtest": {
-    "commandString": "bin/speedtest -f json --accept-license",
+    "commandString": "bin/speedtest -f json --accept-license --accept-gdpr",
     "intervalSec": 43200
   }
 }
