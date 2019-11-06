@@ -7,6 +7,8 @@ services:
     depends_on:
       - mongo
     restart: always
+    volumes:
+      - ./config:/data/config
   speedlogger-runner:
     image: brennentsmith/internet-speed-logger
     depends_on:
@@ -16,6 +18,8 @@ services:
       - node
       - run-speedtest.js
       - daemon
+    volumes:
+      - ./config:/data/config
   mongo:
     image: bitnami/mongodb
     expose:
