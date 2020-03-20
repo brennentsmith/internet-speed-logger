@@ -12,7 +12,7 @@ To bring it online, simply run:
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
-docker compose up
+docker-compose up
 ```
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
 
@@ -40,7 +40,7 @@ All configuration is held within the `/config/default.js` directory. The followi
 | `db.connectionString`   | `mongodb://speedtest:speedtest@mongo:27017/speedtest`        | Connection string the connection for the backend MongoDB compliant database. See: [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/)      |
 | `db.collection`      | `speedtest`       | Collection to use within MongoDB compliant database.   |
 | `speedtest.commandString`      | `bin/speedtest -f json --accept-license`       | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.   |
-| `speedtest.intervalSec`      | `43200`       | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and floored at 1800 seconds.   |
+| `speedtest.intervalSec`      | `43200`       | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and limited to no less than 1800 (30 minutes) seconds between runs.   |
 
 ## Running Internet Speed Logger
 
