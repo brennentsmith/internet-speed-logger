@@ -4,11 +4,11 @@
     "listenHost": "0.0.0.0"
   },
   "db": {
-    "connectionString": "mongodb://speedtest:speedtest@mongo:27017/speedtest",
+    "connectionString": "mongodb://speedtest:speedtest@127.0.0.1:27017/speedtest",
     "collection": "speedtest"
   },
   "speedtest": {
-    "commandString": "bin/speedtest -f json --accept-license --accept-gdpr",
-    "intervalSec": 43200
+    "commandString": "speedtest -f json --accept-license --accept-gdpr",
+    "intervalSec": 3600
   }
 }

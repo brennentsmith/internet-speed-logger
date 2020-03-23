@@ -12,18 +12,18 @@
   "license": "ISC",
   "dependencies": {
     "compression": "^1.6.2",
-    "config": "^3.2.3",
+    "config": "^3.3.0",
     "express": "^4.14.0",
     "jquery": "^3.4.1",
-    "mongodb": "^3.3.3",
-    "morgan": "^1.9.1",
-    "vis-charts": "1.0.0"
+    "mongodb": "~2.2",
+    "morgan": "^1.10.0",
+    "vis-timeline": "7.3.4"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "forever": "^0.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "forever": "^0.15.3",
     "nodemon": "^1.10.2"
   }
 }
