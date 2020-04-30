@@ -41,6 +41,7 @@ All configuration is held within the `/config/default.js` directory. The followi
 | `db.collection`      | `speedtest`       | Collection to use within MongoDB compliant database.   |
 | `speedtest.commandString`      | `bin/speedtest -f json --accept-license`       | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.   |
 | `speedtest.intervalSec`      | `43200`       | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and limited to no less than 1800 (30 minutes) seconds between runs.   |
+| `speedtest.serverId` |  | Specify a specific server to use for each test. You can get nearest servers with `-L` when running the binary manually |
 
 ## Running Internet Speed Logger
 
