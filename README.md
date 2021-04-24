@@ -50,6 +50,7 @@ A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/i
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
+sudo chown -R 1001 mongo-persistence/
 docker compose up
 ```
 
