@@ -12,6 +12,7 @@ To bring it online, simply run:
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
+sudo chown -R 1001 mongo-persistence/
 docker-compose up
 ```
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
@@ -50,6 +51,7 @@ A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/i
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
+sudo chown -R 1001 mongo-persistence/
 docker compose up
 ```
 
