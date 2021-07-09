@@ -9,6 +9,6 @@
   },
   "speedtest": {
     "commandString": "bin/speedtest -f json --accept-license --accept-gdpr",
-    "intervalSec": 43200
+    "intervalSec": 3600
   }
 }
