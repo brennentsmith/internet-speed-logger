@@ -8,12 +8,14 @@ This is a time series based application which continuously monitors your interne
 
 An early version of this service has been running for many years (~2016) and it has been instrumental for tracking internet performance issues.
 
-To bring it online, simply run:
-```
+To bring it online:
+
+```bash
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker-compose up
 ```
+
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
 
 In case you see errors from mongodb with:<br />
@@ -38,11 +40,13 @@ docker-compose up
 ## Components
 
 The requrements for Internet Speed Logger are:
-- NodeJS 12-LTS or newer
+
+- Node.js >= v12.0.0
 - MongoDB
 
 There are three core components to running Internet Speed Logger:
-- Webserver (`/index.js`) - Webserver which delivers static assets and provides API. 
+
+- Webserver (`/index.js`) - Webserver which delivers static assets and provides API.
 - Speedrunner (`/run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
 - MongoDB - "Web Scale" persistence layer. 😜
 
@@ -52,21 +56,22 @@ The Webserver and MongoDB must always be running, however the Speedrunner can be
 
 All configuration is held within the `/config/default.js` directory. The following options are available:
 
-| Leaf | Default | Description |
-| -- | -- | -- |
-| `webserver.listenPort`      | `3000`       | Port which the webserver will listen on   |
-| `webserver.listenHost`      | `0.0.0.0`       | Host which the webserver will listen on   |
-| `db.connectionString`   | `mongodb://speedtest:speedtest@mongo:27017/speedtest`        | Connection string the connection for the backend MongoDB compliant database. See: [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/)      |
-| `db.collection`      | `speedtest`       | Collection to use within MongoDB compliant database.   |
-| `speedtest.commandString`      | `bin/speedtest -f json --accept-license`       | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.   |
-| `speedtest.intervalSec`      | `43200`       | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and limited to no less than 1800 (30 minutes) seconds between runs.   |
+| Leaf                      | Default                                               | Description                                                                                                                                                                    |
+| ------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `webserver.listenPort`    | `3000`                                                | Port which the webserver will listen on                                                                                                                                        |
+| `webserver.listenHost`    | `0.0.0.0`                                             | Host which the webserver will listen on                                                                                                                                        |
+| `db.connectionString`     | `mongodb://speedtest:speedtest@mongo:27017/speedtest` | Connection string the connection for the backend MongoDB compliant database. See: [Connection String URI Format](https://docs.mongodb.com/manual/reference/connection-string/) |
+| `db.collection`           | `speedtest`                                           | Collection to use within MongoDB compliant database.                                                                                                                           |
+| `speedtest.commandString` | `bin/speedtest -f json --accept-license`              | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.                                                     |
+| `speedtest.intervalSec`   | `43200`                                               | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and limited to no less than 1800 (30 minutes) seconds between runs.                         |
 
 ## Running Internet Speed Logger
 
 ### Container
+
 A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/internet-speed-logger) which contains both the webserver and test daemon.
 
-```
+```bash
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
@@ -82,19 +87,26 @@ sudo chown -R 1001 mongo-persistence/
 docker-compose up
 ```
 
-You may see some errors upon boot regarding `speedlogger-web_1     | MongoNetworkError: failed to connect to server` - these are normal as the web service will attempt to create the connection pool before MongoDB is ready. Once MongoDB is ready (~30s), all will work correctly. 
+You may see some errors upon boot:
+
+```plain
+speedlogger-web_1     | MongoNetworkError: failed to connect to server
+```
+
+these are normal as the web service will attempt to create the connection pool before MongoDB is ready. Once MongoDB is ready (~30s), all will work correctly.
 
 ### Forever
-Install the following:
-- NodeJS: https://nodejs.org/en/download/package-manager/ 
-- MongoDB: https://docs.mongodb.com/manual/installation/
-- Forever: https://www.npmjs.com/package/forever (optional) 
 
-```
+Install the following:
+
+- [Node.js](https://nodejs.org/en/download/package-manager/)
+- [MongoDB](https://docs.mongodb.com/manual/installation/)
+
+```bash
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
-<< download latest version of Speedtest-CLI binary to `bin` dir within repo >>
+# download latest version of Speedtest-CLI binary to `bin` dir within repo >>
 npm ci
-forever start index.js
-forever start run-speedtest.js daemon
+npx forever start index.js
+npx forever start run-speedtest.js daemon
 ```
