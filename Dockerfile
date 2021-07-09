@@ -1,4 +1,4 @@
-FROM node:12 as build
+FROM node:16 as build
 WORKDIR /data/
 ENV NODE_ENV=production
 RUN export SPEEDTESTVERSION="1.0.0" && \
@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 COPY . .
 
-FROM node:12 as app
+FROM node:16 as app
 WORKDIR /data/
 COPY --from=build --chown=node:node /data/ .
 USER node
