@@ -4,9 +4,12 @@
   "description": "Automated logger and grapher for speedtests",
   "main": "index.js",
   "scripts": {
-    "dev": "node_modules/nodemon/bin/nodemon.js",
-    "speedtest": "run-test.js",
-    "webserver": "node_modules/forever/bin/forever run index.js"
+    "dev": "nodemon index.js",
+    "speedtest": "node run-speedtest.js",
+    "speedtest-daemon": "forever start run-speedtest.js daemon",
+    "start": "npm run webserver-daemon && npm run speedtest-daemon",
+    "webserver": "node index.js",
+    "webserver-daemon": "forever start index.js"
   },
   "author": "Brennen Smith",
   "license": "ISC",
@@ -17,13 +20,13 @@
     "jquery": "^3.4.1",
     "mongodb": "^3.3.3",
     "morgan": "^1.9.1",
-    "vis-charts": "1.0.0"
+    "vis-charts": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "forever": "^0.15.2",
-    "nodemon": "^1.10.2"
+    "eslint-plugin-import": "^2.18.2",
+    "forever": "^3.0.4",
+    "nodemon": "^2.0.7"
   }
 }

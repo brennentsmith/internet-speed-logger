@@ -1,0 +1,27 @@
+; EditorConfig is awesome: http://EditorConfig.org
+
+root = true
+
+; UTF-8 charset
+; Unix-style newlines with a newline ending every file
+; 2 space indent
+; Trim trailing whitespace
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+; Markdown
+; 4 space indent
+; Trailing whitespace is potentially meaningful, leave it
+[*.md]
+indent_size = 4
+trim_trailing_whitespace = false
+
+; Shell scripts, Python, HTML
+; 4 space indent
+[*.{html,py,sh}]
+indent_size = 4
