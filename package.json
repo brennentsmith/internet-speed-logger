@@ -4,9 +4,12 @@
   "description": "Automated logger and grapher for speedtests",
   "main": "index.js",
   "scripts": {
-    "dev": "node_modules/nodemon/bin/nodemon.js",
-    "speedtest": "run-test.js",
-    "webserver": "node_modules/forever/bin/forever run index.js"
+    "dev": "nodemon index.js",
+    "speedtest": "node run-speedtest.js",
+    "speedtest-daemon": "forever start run-speedtest.js daemon",
+    "start": "npm run webserver-daemon && npm run speedtest-daemon",
+    "webserver": "node index.js",
+    "webserver-daemon": "forever start index.js"
   },
   "author": "Brennen Smith",
   "license": "ISC",
