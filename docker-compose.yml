@@ -28,12 +28,14 @@ services:
       - ./config:/data/config
 
   mongo:
-    image: bitnami/mongodb
+    image: mongo:4
+    ports:
+      - 27017:27107
     expose:
       - 27017
     environment:
-      - MONGODB_USERNAME=speedtest
-      - MONGODB_PASSWORD=speedtest
-      - MONGODB_DATABASE=speedtest
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=speedtest
+      - MONGO_INITDB_DATABASE=speedtest
     volumes:
-      - ./mongo-persistence:/bitnami
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
