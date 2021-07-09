@@ -5,6 +5,8 @@ services:
     image: brennentsmith/internet-speed-logger
     ports:
       - 3000:3000
+    build:
+      context: .
     depends_on:
       - mongo
     restart: always
@@ -13,6 +15,8 @@ services:
 
   speedlogger-runner:
     image: brennentsmith/internet-speed-logger
+    build:
+      context: .
     depends_on:
       - speedlogger-web
     restart: always
