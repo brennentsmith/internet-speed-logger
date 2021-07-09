@@ -20,13 +20,13 @@
     "jquery": "^3.4.1",
     "mongodb": "^3.3.3",
     "morgan": "^1.9.1",
-    "vis-charts": "1.0.0"
+    "vis-charts": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
-    "forever": "^0.15.3",
+    "forever": "^4.0.1",
     "nodemon": "^1.19.4"
   }
 }
