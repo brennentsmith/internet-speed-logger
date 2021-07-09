@@ -1,14 +1,16 @@
-version: "3.7"
+---
+version: "3"
 services:
   speedlogger-web:
     image: brennentsmith/internet-speed-logger
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - mongo
     restart: always
     volumes:
       - ./config:/data/config
+
   speedlogger-runner:
     image: brennentsmith/internet-speed-logger
     depends_on:
@@ -20,10 +22,11 @@ services:
       - daemon
     volumes:
       - ./config:/data/config
+
   mongo:
     image: bitnami/mongodb
     expose:
-      - "27017"
+      - 27017
     environment:
       - MONGODB_USERNAME=speedtest
       - MONGODB_PASSWORD=speedtest
