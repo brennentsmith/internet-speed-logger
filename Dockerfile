@@ -13,7 +13,6 @@ COPY . .
 
 FROM node:16 as app
 WORKDIR /data/
-COPY --from=build --chown=node:node /data/ .
-USER node
+COPY --from=build /data/ .
 
 CMD ["node", "index.js"]
