@@ -16,6 +16,14 @@ docker-compose up
 ```
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
 
+## Updating
+To get the latest Docker image, run:
+```
+docker-compse stop
+docker-compose pull
+docker-compose up
+```
+
 ## Components
 
 The requrements for Internet Speed Logger are:
