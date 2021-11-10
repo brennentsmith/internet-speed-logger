@@ -19,7 +19,7 @@ Wait a couple minutes for MongoDB to initialize, and then go to `http://localhos
 ## Updating
 To get the latest Docker image, run:
 ```
-docker-compse stop
+docker-compose stop
 docker-compose pull
 docker-compose up
 ```
