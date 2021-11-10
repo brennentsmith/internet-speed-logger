@@ -17,8 +17,8 @@ docker-compose up
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
 
 In case you see errors from mongodb with:
-mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
-mongodb exited with code 1
+`mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
+mongodb exited with code 1`
 
 Try to set the persistent data directory rights:
 ```
@@ -72,8 +72,8 @@ cd internet-speed-logger
 docker compose up
 ```
 In case you see errors from mongodb with 
-mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
-mongodb exited with code 1
+`mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
+mongodb exited with code 1`
 
 Try to set the persistent data directory rights:
 ```
