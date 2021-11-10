@@ -12,10 +12,18 @@ To bring it online, simply run:
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
-sudo chown -R 1001 mongo-persistence/
 docker-compose up
 ```
 Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
+In case you see errors from mongodb with 
+mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
+mongodb exited with code 1
+Try to set the persistent data directory rights:
+```
+docker-compose down
+sudo chown -R 1001 mongo-persistence/
+docker-compose up
+```
 
 ## Updating
 To get the latest Docker image, run:
@@ -59,8 +67,16 @@ A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/i
 ```
 git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
-sudo chown -R 1001 mongo-persistence/
 docker compose up
+```
+In case you see errors from mongodb with 
+mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
+mongodb exited with code 1
+Try to set the persistent data directory rights:
+```
+docker-compose down
+sudo chown -R 1001 mongo-persistence/
+docker-compose up
 ```
 
 You may see some errors upon boot regarding `speedlogger-web_1     | MongoNetworkError: failed to connect to server` - these are normal as the web service will attempt to create the connection pool before MongoDB is ready. Once MongoDB is ready (~30s), all will work correctly. 
