@@ -20,10 +20,10 @@
     "vis-charts": "1.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "forever": "^0.15.2",
-    "nodemon": "^1.10.2"
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "forever": "^0.15.3",
+    "nodemon": "^1.19.4"
   }
 }
