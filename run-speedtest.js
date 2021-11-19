@@ -5,6 +5,7 @@ const dbInit = require('./db');
 
 // Get the command to execute
 const cmd = config.get('speedtest.commandString');
+const serverId = config.get('speedtest.serverId')
 
 // Timing related constants
 const minimumIntervalS = 1800;
@@ -70,7 +71,7 @@ function processOutput(error, stdout, stderr) {
 }
 
 function executeSpeedtest() {
-  exec(cmd, processOutput);
+  exec(`${cmd}${serverId ? ` -s ${serverId}`: ''}`, processOutput);
 }
 
 executeSpeedtest();

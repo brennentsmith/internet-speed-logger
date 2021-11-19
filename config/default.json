@@ -9,6 +9,7 @@
   },
   "speedtest": {
     "commandString": "bin/speedtest -f json --accept-license --accept-gdpr",
+    "serverId": null,
     "intervalSec": 43200
   }
 }
