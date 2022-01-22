@@ -1,5 +1,5 @@
 {
-  "name": "speed-logger",
+  "name": "internet-speed-logger",
   "version": "0.0.1",
   "description": "Automated logger and grapher for speedtests",
   "main": "index.js",

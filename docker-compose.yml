@@ -1,7 +1,7 @@
 ---
 version: "3"
 services:
-  speedlogger-web:
+  internet-speed-logger-ui:
     image: brennentsmith/internet-speed-logger
     ports:
       - 3000:3000
@@ -15,7 +15,7 @@ services:
     depends_on:
       - mongo
 
-  speedlogger-runner:
+  internet-speed-logger:
     image: brennentsmith/internet-speed-logger
     depends_on:
       - speedlogger-web
