@@ -1,6 +1,6 @@
 {
   "name": "internet-speed-logger",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Automated logger and grapher for speedtests",
   "main": "index.js",
   "scripts": {
