@@ -7,12 +7,10 @@ RUN export SPEEDTESTVERSION="1.1.1" && \
     mkdir -p bin && \
     curl -Ss -L https://install.speedtest.net/app/cli/ookla-speedtest-$SPEEDTESTVERSION-$SPEEDTESTPLATFORM-$SPEEDTESTARCH.tgz | tar -zx -C /data/bin && \
     chmod +x bin/speedtest
-COPY package.json package-lock.json* ./
-RUN npm ci
 COPY . .
+RUN npm ci
 
 FROM node:16 as app
-WORKDIR /data/
 COPY --from=build /data/ .
 
 CMD ["node", "index.js"]
