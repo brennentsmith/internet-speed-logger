@@ -8,35 +8,6 @@ This is a time series based application which continuously monitors your interne
 
 An early version of this service has been running for many years (~2016) and it has been instrumental for tracking internet performance issues.
 
-To bring it online:
-
-```bash
-git clone https://github.com/brennentsmith/internet-speed-logger.git
-cd internet-speed-logger
-docker-compose up
-```
-
-Wait a couple minutes for MongoDB to initialize, and then go to `http://localhost:3000` in your browser, and away you go!
-
-In case you see errors from mongodb with:<br />
-`mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied`<br />
-`mongodb exited with code 1`
-
-Try to set the persistent data directory rights:
-```
-docker-compose down
-sudo chown -R 1001 mongo-persistence/
-docker-compose up
-```
-
-## Updating
-To get the latest Docker image, run:
-```
-docker-compose stop
-docker-compose pull
-docker-compose up
-```
-
 ## Components
 
 The requrements for Internet Speed Logger are:
@@ -46,15 +17,15 @@ The requrements for Internet Speed Logger are:
 
 There are three core components to running Internet Speed Logger:
 
-- Webserver (`/index.js`) - Webserver which delivers static assets and provides API.
-- Speedrunner (`/run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
+- Webserver (`index.js`) - Webserver which delivers static assets and provides API.
+- Speedrunner (`run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
 - MongoDB - "Web Scale" persistence layer. 😜
 
-The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `/run-speedtest.js daemon` or invoked via cron or SystemD timer as a oneshot process `/run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `/config/default.js`.
+The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `./run-speedtest.js daemon` or invoked via a schedule as a oneshot process `./run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `config/default.js`.
 
 ## Configuration
 
-All configuration is held within the `/config/default.js` directory. The following options are available:
+All configuration is held within the `config/default.js` file. The following options are available:
 
 | Leaf                      | Default                                               | Description                                                                                                                                                                    |
 | ------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -76,15 +47,20 @@ git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
-In case you see errors from mongodb with:<br />
-`mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied`<br />
-`mongodb exited with code 1`
+
+In case you see errors from mongodb with:
+
+```plain
+mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
+mongodb exited with code 1
+```
 
 Try to set the persistent data directory rights:
-```
-docker-compose down
-sudo chown -R 1001 mongo-persistence/
-docker-compose up
+
+```bash
+docker compose down
+chown -R 1001 mongo-persistence/
+docker compose up
 ```
 
 You may see some errors upon boot:
@@ -95,7 +71,7 @@ speedlogger-web_1     | MongoNetworkError: failed to connect to server
 
 these are normal as the web service will attempt to create the connection pool before MongoDB is ready. Once MongoDB is ready (~30s), all will work correctly.
 
-### Forever
+### Using Forever to run locally
 
 Install the following:
 
@@ -107,6 +83,16 @@ git clone https://github.com/brennentsmith/internet-speed-logger.git
 cd internet-speed-logger
 # download latest version of Speedtest-CLI binary to `bin` dir within repo >>
 npm ci
-npx forever start index.js
-npx forever start run-speedtest.js daemon
+npm run webserver-daemon
+npm run speedtest-daemon
+```
+
+## Updating
+
+To get the latest Docker image, run:
+
+```bash
+docker compose stop
+docker compose pull
+docker compose up
 ```
