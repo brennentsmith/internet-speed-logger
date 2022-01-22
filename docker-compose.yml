@@ -5,11 +5,15 @@ services:
     image: brennentsmith/internet-speed-logger
     ports:
       - 3000:3000
-    depends_on:
-      - mongo
     restart: always
+    entrypoint:
+      - npm
+      - run
+      - webserver
     volumes:
       - ./config:/data/config
+    depends_on:
+      - mongo
 
   speedlogger-runner:
     image: brennentsmith/internet-speed-logger
@@ -17,9 +21,9 @@ services:
       - speedlogger-web
     restart: always
     entrypoint:
-      - node
-      - run-speedtest.js
-      - daemon
+      - npm
+      - run
+      - speedtest
     volumes:
       - ./config:/data/config
 

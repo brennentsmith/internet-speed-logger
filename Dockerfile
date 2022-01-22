@@ -12,5 +12,4 @@ RUN npm ci
 
 FROM node:16 as app
 COPY --from=build /data/ .
-
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
