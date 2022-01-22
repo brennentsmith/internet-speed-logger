@@ -18,7 +18,7 @@
     "config": "^3.2.3",
     "express": "^4.14.0",
     "jquery": "^3.4.1",
-    "mongodb": "^3.3.3",
+    "mongodb": "^4.3.1",
     "morgan": "^1.9.1",
     "vis-charts": "^3.0.0"
   },
