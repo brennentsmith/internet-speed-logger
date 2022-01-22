@@ -2,7 +2,7 @@
 version: "3"
 services:
   internet-speed-logger-ui:
-    image: brennentsmith/internet-speed-logger
+    image: ghcr.io/jeffbyrnes/internet-speed-logger
     ports:
       - 3000:3000
     restart: always
@@ -16,7 +16,7 @@ services:
       - mongo
 
   internet-speed-logger:
-    image: brennentsmith/internet-speed-logger
+    image: ghcr.io/jeffbyrnes/internet-speed-logger
     depends_on:
       - speedlogger-web
     restart: always

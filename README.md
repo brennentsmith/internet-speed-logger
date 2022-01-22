@@ -40,10 +40,10 @@ All configuration is held within the `config/default.js` file. The following opt
 
 ### Container
 
-A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/internet-speed-logger) which contains both the webserver and test daemon.
+The images are published to GitHub Packages, and it contains both the webserver and test daemon.
 
 ```bash
-git clone https://github.com/brennentsmith/internet-speed-logger.git
+git clone https://github.com/jeffbyrnes/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
@@ -79,7 +79,7 @@ Install the following:
 - [MongoDB](https://docs.mongodb.com/manual/installation/)
 
 ```bash
-git clone https://github.com/brennentsmith/internet-speed-logger.git
+git clone https://github.com/jeffbyrnes/internet-speed-logger.git
 cd internet-speed-logger
 # download latest version of Speedtest-CLI binary to `bin` dir within repo >>
 npm ci
