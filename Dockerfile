@@ -1,4 +1,4 @@
-FROM node:16 as build
+FROM node:18 as build
 WORKDIR /data/
 ENV NODE_ENV=production
 RUN export SPEEDTESTVERSION="1.2.0" && \
@@ -10,6 +10,6 @@ RUN export SPEEDTESTVERSION="1.2.0" && \
 COPY . .
 RUN npm ci
 
-FROM node:16 as app
+FROM node:18 as app
 COPY --from=build /data/ .
 CMD ["npm", "start"]
