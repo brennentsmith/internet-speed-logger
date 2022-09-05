@@ -2,7 +2,6 @@
 
 set -ex
 
-PARENT_DIR=$(basename "${PWD%/*}")
 IMAGE_NAME="ghcr.io/jeffbyrnes/internet-speed-logger"
 TAG=$(git rev-parse --short HEAD)
 
