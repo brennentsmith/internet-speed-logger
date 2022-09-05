@@ -1,8 +1,8 @@
 ---
 version: "3"
 services:
-  internet-speed-logger-ui:
-    image: ghcr.io/jeffbyrnes/internet-speed-logger
+  ui:
+    build: ./
     ports:
       - 3000:3000
     restart: always
@@ -15,8 +15,8 @@ services:
     depends_on:
       - mongo
 
-  internet-speed-logger:
-    image: ghcr.io/jeffbyrnes/internet-speed-logger
+  runner:
+    build: ./
     depends_on:
       - speedlogger-web
     restart: always
