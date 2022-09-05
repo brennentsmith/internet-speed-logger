@@ -18,7 +18,8 @@ services:
   runner:
     build: ./
     depends_on:
-      - speedlogger-web
+      - mongo
+      - ui
     restart: always
     entrypoint:
       - npm
