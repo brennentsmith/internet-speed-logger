@@ -3,8 +3,9 @@ const { MongoClient } = require('mongodb');
 
 const mongoUrl = config.get('db.connectionString');
 
-function connect(url) {
-  return MongoClient.connect(url).then((client) => client.db());
+async function connect(url) {
+  const client = await MongoClient.connect(url);
+  return client.db();
 }
 
 module.exports = async () => {

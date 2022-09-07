@@ -21,7 +21,7 @@ There are three core components to running Internet Speed Logger:
 - Speedrunner (`run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
 - MongoDB - "Web Scale" persistence layer. 😜
 
-The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `./run-speedtest.js daemon` or invoked via a schedule as a oneshot process `./run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `config/default.js`.
+The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `./run-speedtest.js daemon` or invoked via a schedule as a oneshot process `./run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `config/default.json`.
 
 ## Configuration
 
@@ -40,28 +40,15 @@ All configuration is held within the `config/default.js` file. The following opt
 
 ### Container
 
-A container is published to [Dockerhub](https://hub.docker.com/r/brennentsmith/internet-speed-logger) which contains both the webserver and test daemon.
+The images are published to GitHub Packages, and it contains both the webserver and test daemon.
 
 ```bash
-git clone https://github.com/brennentsmith/internet-speed-logger.git
+git clone https://github.com/jeffbyrnes/internet-speed-logger.git
 cd internet-speed-logger
 docker compose up
 ```
 
-In case you see errors from mongodb with:
-
-```plain
-mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
-mongodb exited with code 1
-```
-
-Try to set the persistent data directory rights:
-
-```bash
-docker compose down
-chown -R 1001 mongo-persistence/
-docker compose up
-```
+The provided [`docker-compose.yml`](docker-compose.yml) can be modified to suit, or used as an example for your own Docker Compose setup with other services.
 
 You may see some errors upon boot:
 
@@ -79,7 +66,7 @@ Install the following:
 - [MongoDB](https://docs.mongodb.com/manual/installation/)
 
 ```bash
-git clone https://github.com/brennentsmith/internet-speed-logger.git
+git clone https://github.com/jeffbyrnes/internet-speed-logger.git
 cd internet-speed-logger
 # download latest version of Speedtest-CLI binary to `bin` dir within repo >>
 npm ci

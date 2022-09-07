@@ -1,7 +1,8 @@
-FROM node:16 as build
+FROM node:18 as build
 WORKDIR /data/
 ENV NODE_ENV=production
-RUN export SPEEDTESTVERSION="1.1.1" && \
+LABEL org.opencontainers.image.source=https://github.com/jeffbyrnes/internet-speed-logger
+RUN export SPEEDTESTVERSION="1.2.0" && \
     export SPEEDTESTARCH="x86_64" && \
     export SPEEDTESTPLATFORM="linux" && \
     mkdir -p bin && \
@@ -10,6 +11,6 @@ RUN export SPEEDTESTVERSION="1.1.1" && \
 COPY . .
 RUN npm ci
 
-FROM node:16 as app
+FROM node:18 as app
 COPY --from=build /data/ .
 CMD ["npm", "start"]

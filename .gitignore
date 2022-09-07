@@ -62,3 +62,4 @@ typings/
 
 # Persistent volume for mongodb
 mongo-persistence
+/bin/speedtest

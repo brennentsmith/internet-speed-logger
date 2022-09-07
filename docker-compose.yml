@@ -1,8 +1,8 @@
 ---
 version: "3"
 services:
-  speedlogger-web:
-    image: brennentsmith/internet-speed-logger
+  ui:
+    build: ./
     ports:
       - 3000:3000
     restart: always
@@ -15,10 +15,11 @@ services:
     depends_on:
       - mongo
 
-  speedlogger-runner:
-    image: brennentsmith/internet-speed-logger
+  runner:
+    build: ./
     depends_on:
-      - speedlogger-web
+      - mongo
+      - ui
     restart: always
     entrypoint:
       - npm
