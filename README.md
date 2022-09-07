@@ -48,20 +48,7 @@ cd internet-speed-logger
 docker compose up
 ```
 
-In case you see errors from mongodb with:
-
-```plain
-mongodb | mkdir: cannot create directory '/bitnami/mongodb': Permission denied
-mongodb exited with code 1
-```
-
-Try to set the persistent data directory rights:
-
-```bash
-docker compose down
-chown -R 1001 mongo-persistence/
-docker compose up
-```
+The provided [`docker-compose.yml`](docker-compose.yml) can be modified to suit, or used as an example for your own Docker Compose setup with other services.
 
 You may see some errors upon boot:
 
