@@ -21,7 +21,7 @@ There are three core components to running Internet Speed Logger:
 - Speedrunner (`run-speedtest.js`) - Daemon or One Shot process which performs the internet speed test.
 - MongoDB - "Web Scale" persistence layer. 😜
 
-The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `./run-speedtest.js daemon` or invoked via a schedule as a oneshot process `./run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `config/default.js`.
+The Webserver and MongoDB must always be running, however the Speedrunner can be either run as a daemon `./run-speedtest.js daemon` or invoked via a schedule as a oneshot process `./run-speedtest.js`. Both the Webserver and Speedrunner share the common config within `config/default.json`.
 
 ## Configuration
 
