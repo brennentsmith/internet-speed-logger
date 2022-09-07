@@ -3,7 +3,7 @@ name: Create and publish a Docker image
 "on":
   push:
     branches:
-      - rename-for-myself
+      - main
 
 env:
   REGISTRY: ghcr.io
