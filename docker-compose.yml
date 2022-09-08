@@ -2,7 +2,7 @@
 version: "3"
 services:
   ui:
-    build: ./
+    image: ghcr.io/jeffbyrnes/internet-speed-logger:latest
     ports:
       - 3000:3000
     restart: always
@@ -16,7 +16,7 @@ services:
       - mongo
 
   runner:
-    build: ./
+    image: ghcr.io/jeffbyrnes/internet-speed-logger:latest
     depends_on:
       - mongo
       - ui
@@ -41,7 +41,6 @@ services:
       - MONGO_INITDB_DATABASE=speedtest
     volumes:
       - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-
   # README: Uncomment this stanza to run a container that provides UI access to
   #         the MongoDB server container
   # mongo-express:
