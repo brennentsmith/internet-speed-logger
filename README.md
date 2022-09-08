@@ -25,7 +25,7 @@ The Webserver and MongoDB must always be running, however the Speedrunner can be
 
 ## Configuration
 
-All configuration is held within the `config/default.js` file. The following options are available:
+Configuration for the logger & runner is in the `config/default.js` file. The following options are available:
 
 | Leaf                      | Default                                               | Description                                                                                                                                                                    |
 | ------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -35,6 +35,19 @@ All configuration is held within the `config/default.js` file. The following opt
 | `db.collection`           | `speedtest`                                           | Collection to use within MongoDB compliant database.                                                                                                                           |
 | `speedtest.commandString` | `bin/speedtest -f json --accept-license`              | Raw command to execute to perform speed test. Change this if you want it on a different path or specify a specific server.                                                     |
 | `speedtest.intervalSec`   | `43200`                                               | Interval for which the speedtest will be run. This will be randomly skewed +/- 25% and limited to no less than 1800 (30 minutes) seconds between runs.                         |
+
+MongoDB bootstraps itself from the `docker-entrypoint-initdb.d/mongo-init.js` file. Meaningful options to change, which should correspond to what you set in `config/default.json` for the Node.js app:
+
+| Key    | Default     | Description                                                         |
+| ------ | ----------- | ------------------------------------------------------------------- |
+| `user` | `speedtest` | The user that is created in for access to the `speedtest` DB        |
+| `pwd`  | `speedtest` | Password for the specified `user` for access to the `speedtest` DB. |
+
+The `db.connectionString` in `config/default.js` should use the `user` & `pwd` you set in `docker-entrypoint-initdb.d/mongo-init.js`, like so:
+
+```json
+"connectionString": "mongodb://<user>:<pwd>@mongo/speedtest",
+```
 
 ## Running Internet Speed Logger
 
