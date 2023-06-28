@@ -1,7 +1,9 @@
+/* eslint-disable no-restricted-globals */
+/* global print, db */
 print('Start #################################################################');
 
-db = db.getSiblingDB('speedtest');
-db.createUser(
+const speedtestDb = db.getSiblingDB('speedtest');
+speedtestDb.createUser(
   {
     user: 'speedtest',
     pwd: 'speedtest',
@@ -11,6 +13,6 @@ db.createUser(
     }],
   },
 );
-db.createCollection('speedtest');
+speedtestDb.createCollection('speedtest');
 
 print('END #################################################################');
