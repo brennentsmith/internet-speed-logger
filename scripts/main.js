@@ -5,7 +5,6 @@ const container = document.getElementById('visualization');
 const groups = new vis.DataSet();
 let debounceGlobal = true;
 
-
 const options = {
   start: new Date().getTime() - 24 * 60 * 60 * 1000,
   end: new Date().getTime() + 60 * 60 * 1000,

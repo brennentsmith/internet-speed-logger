@@ -1,34 +1,57 @@
+---
 version: "3"
 services:
-  speedlogger-web:
-    image: brennentsmith/internet-speed-logger
+  ui:
+    image: ghcr.io/jeffbyrnes/internet-speed-logger:latest
     ports:
       - 3000:3000
-    depends_on:
-      - mongo
-    restart: always
-    volumes:
-      - ./config:/data/config
-  speedlogger-runner:
-    image: brennentsmith/internet-speed-logger
-    depends_on:
-      - speedlogger-web
     restart: always
     entrypoint:
-      - node
-      - run-speedtest.js
-      - daemon
+      - npm
+      - run
+      - webserver
     volumes:
       - ./config:/data/config
-  mongo:
-    image: bitnami/mongodb
+    depends_on:
+      - mongo
+
+  runner:
+    image: ghcr.io/jeffbyrnes/internet-speed-logger:latest
+    depends_on:
+      - mongo
+      - ui
     restart: always
+    entrypoint:
+      - npm
+      - run
+      - speedtest
+    volumes:
+      - ./config:/data/config
+
+  mongo:
+    image: mongo:4
+    restart: always
+    ports:
+      - 27017:27107
     expose:
       - 27017
     environment:
-      - MONGODB_ROOT_PASSWORD=speedtest
-      - MONGODB_USERNAME=speedtest
-      - MONGODB_PASSWORD=speedtest
-      - MONGODB_DATABASE=speedtest
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=speedtest
+      - MONGO_INITDB_DATABASE=speedtest
     volumes:
-      - ./mongo-persistence:/bitnami
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  # README: Uncomment this stanza to run a container that provides UI access to
+  #         the MongoDB server container
+  # mongo-express:
+  #   image: mongo-express
+  #   depends_on:
+  #     - mongo
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     - ME_CONFIG_MONGODB_SERVER=mongo
+  #     - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+  #     - ME_CONFIG_MONGODB_ADMINPASSWORD=speedtest
+  #     - ME_CONFIG_OPTIONS_EDITORTHEME=solarized
