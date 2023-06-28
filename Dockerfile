@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20
 WORKDIR /home/node/app
 ENV NODE_ENV=production
 LABEL org.opencontainers.image.source=https://github.com/jeffbyrnes/internet-speed-logger
